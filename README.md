@@ -31,3 +31,12 @@ function generatePoem(code) {
     document.getElementById("message").innerText = poem
 }
 ```
+This script finds your city/town/village/country and displays it
+```js
+async function getCity(latitude, longitude) {
+    const response = await fetch(`https://geocode.maps.co/reverse?lat=${latitude}&lon=${longitude}&api_key=6a23bd0f46c8b755877748gskab44f2&accept-language=en`)
+    const data = await response.json()
+    console.log(data)
+    document.getElementById("city").innerText = data.address?.city || data.address?.town || data.address?.village || data.address.country || "Location could not be found!"
+}
+```
