@@ -1,7 +1,4 @@
-navigator.geolocation.getCurrentPosition(
-    success,
-    error
-)
+navigator.geolocation.getCurrentPosition(success, error)
 
 function success(position) {
     const latitude = position.coords.latitude
@@ -52,7 +49,7 @@ function generatePoem(code) {
 }
 
 async function getCity(latitude, longitude) {
-    const response = await fetch(`https://geocode.maps.co/reverse?lat=${latitude}&lon=${longitude}&api_key=(Your_API_Key)&accept-language=en`)
+    const response = await fetch(`https://geocode.maps.co/reverse?lat=${latitude}&lon=${longitude}&api_key=6a23bd0f46c8b755877748gskab44f2&accept-language=en`)
     const data = await response.json()
     console.log(data)
     document.getElementById("city").innerText = data.address?.city || data.address?.town || data.address?.village || data.address.country || "Location could not be found!"
