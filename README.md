@@ -1,5 +1,17 @@
 # plant-whisperer
 A website where each time you visit, it generates a poetic message based on the real-time weather in your city — like ‘The rain whispers to the succulent: you’re not alone.’ Uses your IP to fetch local weather and turns it into lyrical, whimsical micro-poetry.
+
+This code gets weather condition of your location
+```js
+async function getWeather(latitude, longitude) {
+    const url = `https://api.open-meteo.com/v1/forecast?latitude=${latitude}&longitude=${longitude}&current=weather_code`;
+    const response = await fetch(url);
+    const data = await response.json();
+    const weathercode = data.current.weather_code;
+    generatePoem(weathercode);
+}
+```
+
 Following is the js code for generating poems according to the weather
 ```js
 function generatePoem(code) {
